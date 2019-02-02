@@ -17,13 +17,14 @@ public class StaffChat extends PluginBase {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        if (!(sender instanceof Player)) return true;
+        // if (!(sender instanceof Player)) return true;
         if (cmd.getName().equalsIgnoreCase("sc")) {
             for (Player p : getServer().getOnlinePlayers().values()) {
                 if (p.hasPermission("staff.chat")) {
                     p.sendMessage(c.getString("format").replace("§", "\u00A7").replace("%name%", sender.getName()).replace("%message%", String.join(" ", args)));
                 }
             }
+            this.getLogger().info(c.getString("format").replace("§", "\u00A7").replace("%name%", sender.getName()).replace("%message%", String.join(" ", args)));
             return true;
         }
         return true;
